@@ -12,14 +12,14 @@ Competitive learning methods and self-organizing "neural" networks: LBG, LBG-U, 
 
 Compile with Maven and run jar file:
 ```
-  mvn install
-  java -jar target/
+$ mvn install
+$ java -jar target/neuralnet*.jar
 ```
 
 or run directly with Maven:
 
 ```
-mvn "-Dexec.args=-classpath %classpath cz.cvut.neuralnet.DemoNG" -Dexec.executable=java org.codehaus.mojo:exec-maven-plugin:1.2.1:exec
+$ mvn "-Dexec.args=-classpath %classpath cz.cvut.neuralnet.DemoNG" -Dexec.executable=java org.codehaus.mojo:exec-maven-plugin:1.2.1:exec
 ```
 
 ## Links
