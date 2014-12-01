@@ -4,8 +4,12 @@ Competitive learning methods and self-organizing "neural" networks: LBG, LBG-U, 
 
 ![Growing grid](https://raw.githubusercontent.com/deric/demogng/screens/screens/ggf.png?width=600)
 
+![](https://raw.githubusercontent.com/deric/demogng/screens/screens/ggf2.png)
+![](https://raw.githubusercontent.com/deric/demogng/screens/screens/gng.png)
+![](https://raw.githubusercontent.com/deric/demogng/screens/screens/gng1.png)
+[[https://raw.githubusercontent.com/deric/demogng/screens/screens/ggf2.png | width = 400px]]
 
-[[https://raw.githubusercontent.com/deric/demogng/screens/screens/ggf2.png|width=400px]]
+
 
 ## Links
 
