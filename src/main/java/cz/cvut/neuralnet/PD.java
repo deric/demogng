@@ -1,3 +1,4 @@
+package cz.cvut.neuralnet;
 // ========================================================================== ;
 //                                                                            ;
 // Copyright 1996-1998 Hartmut S. Loos, Instit. f. Neuroinformatik, Bochum    ;
@@ -20,72 +21,33 @@
 // ========================================================================== ;
 
 /**
- * A class representing a float point in the plane.
- *
+ * @author B. Fritzke
+ * enum for all probability distributions
  */
-class FPoint {
-  /**
-   * The x coordinate
-   */
-  public float x;
-  /**
-   * The y coordinate
-   */
-  public float y;
+public enum PD {
 
-  /**
-   * Constructor.
-   * 
-   */
-  public FPoint() {
-    this.x = -1.0f;
-    this.y = -1.0f;
-  }
+    Rectangle("Rectangle"),
+    Circle("Circle"),
+    TwoCircles("Two Circles"),
+    Ring("Ring"),
+    UNI("UNI"),
+    SmallSpirals("Small Spirals"),
+    LargeSpirals("Large Spirals"),
+    HiLoDensity("HiLo Density"),
+    DiscreteMixture("DiscreteMixture"),
+    UNIT("UNIT"),
+    MoveJump("Move & Jump"),
+    Move("Move"),
+    Jump("Jump"),
+    RightMouseB("Right Mouse-Btn");
+    private String name;
 
-  /**
-   * Constructor, allows setting the coordinates.
-   * 
-   * @param x        The x coordinate
-   * @param y        The y coordinate
-   */
-  public FPoint(float x, float y) {
-    this.x = x;
-    this.y = y;
-  }
+    public String getName() {
+        return name;
+    }
 
-  /**
-   * Set the member variables.
-   * 
-   * @param x        The x coordinate
-   * @param y        The y coordinate
-   */
-  public void set(float x, float y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  /**
-   * Set the member variables.
-   * 
-   * @param p        The coordinates
-   */
-  public void set(FPoint p) {
-    x = p.x;
-    y = p.y;
-  }
-
-  /**
-   * Test the member variables.
-   * 
-   * @param x        The x coordinate
-   * @param y        The y coordinate
-   * @return	     Equal?
-   */
-  public boolean equal(float x, float y) {
-    if ( (this.x == x) && (this.y == y) )
-      return(true);
-    else
-      return(false);
-  }
+    private PD(String name) {
+        this.name = name;
+    }
 
 }

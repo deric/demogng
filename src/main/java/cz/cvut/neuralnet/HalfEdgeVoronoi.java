@@ -1,3 +1,4 @@
+package cz.cvut.neuralnet;
 // ========================================================================== ;
 //                                                                            ;
 // Copyright 1996-1998 Hartmut S. Loos, Instit. f. Neuroinformatik, Bochum    ;
@@ -20,39 +21,56 @@
 // ========================================================================== ;
 
 /**
- * A class representing a Voronoi line. 
+ * A class representing a halfedge in the Voronoi diagram
  *
  */
-class LineGNG {
-  /**
-   * The first point (x) of the line
-   */
-  protected int x1 = -1;
-  /**
-   * The first point (y) of the line
-   */
-  protected int y1 = -1;
-  /**
-   * The last point (x) of the line
-   */
-  protected int x2 = -1;
-  /**
-   * The last point (y) of the line
-   */
-  protected int y2 = -1;
+public class HalfEdgeVoronoi {
 
-  /**
-   * Constructor, allows setting the coordinates.
-   * 
-   * @param x1        The first x coordinate
-   * @param y1        The first y coordinate
-   * @param x2        The second x coordinate
-   * @param y2        The second y coordinate
-   */
-  public LineGNG (int x1, int y1, int x2, int y2) {
-    this.x1 = x1;
-    this.y1 = y1;
-    this.x2 = x2;
-    this.y2 = y2;
-  }
+    public HalfEdgeVoronoi ELleft;
+    public HalfEdgeVoronoi ELright;
+    public EdgeVoronoi ELedge = null;
+    public SiteVoronoi vertex = null;
+    public int ELpm = -1;
+    public int ELrefcnt = -1;
+    public float ystar = -1.0f;
+
+    public HalfEdgeVoronoi() {
+        ELedge = new EdgeVoronoi();
+        vertex = new SiteVoronoi();
+        ELpm = 0;
+        ystar = 0.0f;
+    }
+
+    public HalfEdgeVoronoi(EdgeVoronoi e, int pm) {
+        ELedge = e;
+        ELpm = pm;
+        vertex = null;
+        ELrefcnt = 0;
+    }
+
+    /**
+     * Returns whether this edge is greater than the passed edge.
+     *
+     * @param HalfEdgeVoronoi he	The edge to compare this edge to.
+     */
+    public boolean greaterThan(HalfEdgeVoronoi he) {
+        return ystar > he.ystar;
+    }
+
+    /**
+     * Returns whether this edge is equal to the passed edge.
+     *
+     * @param HalfEdgeVoronoi he	The edge to compare this edge to.
+     */
+    public boolean equal(HalfEdgeVoronoi he) {
+        return ystar == he.ystar;
+    }
+
+    /**
+     * Prints this edge.
+     */
+    public void print() {
+        System.out.println("HE: ystar = " + ystar + ", ELpm = " + ELpm);
+    }
+
 }

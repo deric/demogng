@@ -1,3 +1,4 @@
+package cz.cvut.neuralnet;
 // ========================================================================== ;
 //                                                                            ;
 // Copyright 1996-1998 Hartmut S. Loos, Instit. f. Neuroinformatik, Bochum    ;
@@ -20,62 +21,74 @@
 // ========================================================================== ;
 
 /**
- * A class which represents the elements of the double linked list class
- *  ListGNG.
+ * A class representing a float point in the plane.
  *
  */
-class ListElem {
+public class FPoint {
 
-  /**
-   * The left neighbour.
-   */
-  ListElem		left;
-  /**
-   * The right neighbour.
-   */
-  ListElem		right;
-  /**
-   * The element is a halfedge.
-   */
-  HalfEdgeVoronoi	elem;
+    /**
+     * The x coordinate
+     */
+    public float x;
+    /**
+     * The y coordinate
+     */
+    public float y;
 
-  /**
-   * Constructor, initializes member data.
-   */
-  ListElem() {
-    left = null;
-    right = null;
-    elem = null;
-  }
+    /**
+     * Constructor.
+     *
+     */
+    public FPoint() {
+        this.x = -1.0f;
+        this.y = -1.0f;
+    }
 
-  /**
-   * Constructor, allows setting data.
-   *
-   * @param HalfEdgeVoronoi elem 	The data elem
-   */
-  ListElem(HalfEdgeVoronoi elem) {
-    left = right = null;
-    this.elem = elem;
-  }
+    /**
+     * Constructor, allows setting the coordinates.
+     *
+     * @param x The x coordinate
+     * @param y The y coordinate
+     */
+    public FPoint(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
 
-  /**
-   * Constructor, allows setting neighbors and data.
-   *
-   * @param l 		Left neighbor
-   * @param r 		Right neighbor
-   * @param elem 	The data elem
-   */
-  ListElem(ListElem l, ListElem r, HalfEdgeVoronoi elem) {
-    left = l;
-    right = r;
-    this.elem = elem;
-  }
+    /**
+     * Set the member variables.
+     *
+     * @param x The x coordinate
+     * @param y The y coordinate
+     */
+    public void set(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
 
-  /**
-   * Print the element.
-   */
-  public void print() {
-    if(elem != null)
-      elem.print();
-  }
+    /**
+     * Set the member variables.
+     *
+     * @param p The coordinates
+     */
+    public void set(FPoint p) {
+        x = p.x;
+        y = p.y;
+    }
+
+    /**
+     * Test the member variables.
+     *
+     * @param x The x coordinate
+     * @param y The y coordinate
+     * @return	Equal?
+     */
+    public boolean equal(float x, float y) {
+        if ((this.x == x) && (this.y == y)) {
+            return (true);
+        } else {
+            return (false);
+        }
+    }
+
 }

@@ -1,3 +1,5 @@
+package cz.cvut.neuralnet;
+
 // ========================================================================== ;
 //                                                                            ;
 // Copyright 1996-1998 Hartmut S. Loos, Instit. f. Neuroinformatik, Bochum    ;
@@ -18,39 +20,69 @@
 // Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.                  ;
 //                                                                            ;
 // ========================================================================== ;
-
 /**
- * A class representing an edge in the Voronoi diagram
- *
+ * @author B. Fritzke
+ * enum for all learning methods
  */
-class EdgeVoronoi {
-  /**
-   * One part of line equation.
-   * (equation: ax + by = c)
-   */
-  public float a;
-  /**
-   * One part of line equation.
-   * (equation: ax + by = c)
-   */
-  public float b;
-  /**
-   * One part of line equation.
-   * (equation: ax + by = c)
-   */
-  public float c;
-  /**
-   * The number of the edge
-   */
-  public int edgenbr = 0;
+public enum Algo {
 
-  /**
-   * The sites of the edge
-   */
-  public SiteVoronoi ep[] = new SiteVoronoi[2];
-  /**
-   * The next region
-   */
-  public SiteVoronoi reg[] = new SiteVoronoi[2];
+    LBG("LBG (Linde,Buzo,Gray)", "LBG"),
+    LBGU("LBG-U (Fritzke)", "LBGU"),
+    HCL("Hard Competitive Learning", "HCL"),
+    CHL("Competitive Hebbian Learning  (Martinetz)", "CHL"),
+    NG("Neural Gas  (Martinetz)", "NG"),
+    NGCHL("Neural Gas with CHL  (Martinetz)", "NGwCHL"),
+    GNG("Growing Neural Gas (Fritzke)", "GNG"),
+    GNGU("Growing Neural Gas with Utility (Fritzke)", "GNGU"),
+    SOM("The Self-Organizing Map  (Kohonen)", "SOM"),
+    GG("Growing Grid  (Fritzke)", "GG"),
+    GR("Growing Ring  (Fritzke)", "GR");
+    private String name;
 
+    public String getName() {
+        return name;
+    }
+
+    public String getMnemo() {
+        return mnemo;
+    }
+
+    public boolean isLBGType() {
+        if (this == LBG | this == LBGU) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean isGNGType() {
+        if (this == GNG | this == GNGU) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isSOMType() {
+        if (this == SOM | this == GG | this == GR) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean isDiscrete() {
+        if (ordinal() == 0 || ordinal() == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    private String mnemo;
+
+    private Algo(String name, String mnemo) {
+        this.name = name;
+        this.mnemo = mnemo;
+    }
 }

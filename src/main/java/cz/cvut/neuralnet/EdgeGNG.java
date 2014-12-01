@@ -1,3 +1,4 @@
+package cz.cvut.neuralnet;
 // ========================================================================== ;
 //                                                                            ;
 // Copyright 1996-1998 Hartmut S. Loos, Instit. f. Neuroinformatik, Bochum    ;
@@ -20,57 +21,51 @@
 // ========================================================================== ;
 
 /**
- * @author B. Fritzke
- * enum for all learning methods
+ * A class representing an edge.
+ * For example:
+ * <pre>
+ *    EdgeGNG e = new EdgeGNG();
+ *    e.from(Node1);
+ *    e.to(Node2);
+ * </pre>
+ *
  */
-public enum Algo {
-	LBG("LBG (Linde,Buzo,Gray)","LBG"),
-	LBGU("LBG-U (Fritzke)","LBGU"),
-	HCL("Hard Competitive Learning","HCL"), 
-	CHL("Competitive Hebbian Learning  (Martinetz)","CHL"),
-	NG("Neural Gas  (Martinetz)","NG"), 
-	NGCHL("Neural Gas with CHL  (Martinetz)","NGwCHL"),
-	GNG("Growing Neural Gas (Fritzke)","GNG"),
-	GNGU("Growing Neural Gas with Utility (Fritzke)","GNGU"),
-	SOM("The Self-Organizing Map  (Kohonen)","SOM"),
-	GG("Growing Grid  (Fritzke)","GG"),
-	GR("Growing Ring  (Fritzke)","GR");
-	private String name;
-	public String getName() {
-		return name;
-	}
-	public String getMnemo() {
-		return mnemo;
-	}
-	public boolean isLBGType(){
-		if (this==LBG | this == LBGU)
-			return true;
-		else
-			return false;
-	
-	}
-	public boolean isGNGType(){
-		if (this==GNG | this == GNGU)
-			return true;
-		else
-			return false;
-	}
-	public boolean isSOMType(){
-		if (this==SOM | this == GG | this == GR)
-			return true;
-		else
-			return false;
-	}
-	public boolean isDiscrete(){
-		if (ordinal()==0 || ordinal() ==1)
-			return true;
-		else
-			return false;
-	}
-	private String mnemo;
-	private Algo(String name,String mnemo){
-		this.name=name;
-		this.mnemo=mnemo;
-	}
-}
+public class EdgeGNG {
 
+    /**
+     * The starting point of the edge
+     *
+     * @see EdgeGNG
+     */
+    protected int from = -1;
+    /**
+     * The end point of the edge
+     *
+     * @see EdgeGNG
+     */
+    protected int to = -1;
+    /**
+     * The age of this edge.
+     *
+     * @see EdgeGNG
+     */
+    protected int age = 0;
+
+    /**
+     * Replace a node with a new one. This is necessary after deleting a node
+     * in the static array. In most cases the deleted node will be replaced by
+     * the last node in the static array.
+     *
+     * @param old  The index of a node
+     * @param newN The index of a node
+     * @see ComputeGNG#deleteNode
+     */
+    protected void replace(int old, int newN) {
+        if (from == old) {
+            from = newN;
+        }
+        if (to == old) {
+            to = newN;
+        }
+    }
+}

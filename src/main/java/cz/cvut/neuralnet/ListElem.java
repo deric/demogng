@@ -1,3 +1,4 @@
+package cz.cvut.neuralnet;
 // ========================================================================== ;
 //                                                                            ;
 // Copyright 1996-1998 Hartmut S. Loos, Instit. f. Neuroinformatik, Bochum    ;
@@ -20,26 +21,63 @@
 // ========================================================================== ;
 
 /**
- * A class representing a node in the grid.
+ * A class which represents the elements of the double linked list class
+ * ListGNG.
  *
  */
-class GridNodeGNG {
-  NodeGNG node;
-  int index;
+public class ListElem {
 
-  /**
-   * Construct the default grid node.
-   */
-  GridNodeGNG() {
-	index = -1;
-  }
+    /**
+     * The left neighbour.
+     */
+    ListElem left;
+    /**
+     * The right neighbour.
+     */
+    ListElem right;
+    /**
+     * The element is a halfedge.
+     */
+    HalfEdgeVoronoi elem;
 
-  /**
-   * Construct the grid node and sets the index and node.
-   */
-  GridNodeGNG(int index, NodeGNG node) {
-	this.index = index;
-	this.node = node;
-  }
+    /**
+     * Constructor, initializes member data.
+     */
+    ListElem() {
+        left = null;
+        right = null;
+        elem = null;
+    }
 
+    /**
+     * Constructor, allows setting data.
+     *
+     * @param HalfEdgeVoronoi elem The data elem
+     */
+    ListElem(HalfEdgeVoronoi elem) {
+        left = right = null;
+        this.elem = elem;
+    }
+
+    /**
+     * Constructor, allows setting neighbors and data.
+     *
+     * @param l 		 Left neighbor
+     * @param r 		 Right neighbor
+     * @param elem The data elem
+     */
+    ListElem(ListElem l, ListElem r, HalfEdgeVoronoi elem) {
+        left = l;
+        right = r;
+        this.elem = elem;
+    }
+
+    /**
+     * Print the element.
+     */
+    public void print() {
+        if (elem != null) {
+            elem.print();
+        }
+    }
 }

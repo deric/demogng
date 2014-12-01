@@ -1,3 +1,4 @@
+package cz.cvut.neuralnet;
 // ========================================================================== ;
 //                                                                            ;
 // Copyright 1996-1998 Hartmut S. Loos, Instit. f. Neuroinformatik, Bochum    ;
@@ -20,55 +21,38 @@
 // ========================================================================== ;
 
 /**
- * A class representing a halfedge in the Voronoi diagram
+ * A class representing an edge in the Voronoi diagram
  *
  */
-class HalfEdgeVoronoi {
-  public HalfEdgeVoronoi ELleft;
-  public HalfEdgeVoronoi ELright;
-  public EdgeVoronoi ELedge = null;
-  public SiteVoronoi vertex = null;
-  public int ELpm = -1;
-  public int ELrefcnt = -1;
-  public float ystar = -1.0f;
+public class EdgeVoronoi {
 
-  public HalfEdgeVoronoi() {
-    ELedge = new EdgeVoronoi();
-    vertex = new SiteVoronoi();
-    ELpm = 0;
-    ystar = 0.0f;
-  }
+    /**
+     * One part of line equation.
+     * (equation: ax + by = c)
+     */
+    public float a;
+    /**
+     * One part of line equation.
+     * (equation: ax + by = c)
+     */
+    public float b;
+    /**
+     * One part of line equation.
+     * (equation: ax + by = c)
+     */
+    public float c;
+    /**
+     * The number of the edge
+     */
+    public int edgenbr = 0;
 
-  public HalfEdgeVoronoi(EdgeVoronoi e, int pm) {
-    ELedge = e;
-    ELpm = pm;
-    vertex = null;
-    ELrefcnt = 0;
-  }
-
-  /**
-   * Returns whether this edge is greater than the passed edge.
-   *
-   * @param HalfEdgeVoronoi he	 	The edge to compare this edge to.
-   */
-  public boolean greaterThan(HalfEdgeVoronoi he) {
-    return ystar > he.ystar;
-  }
-  
-  /**
-   * Returns whether this edge is equal to the passed edge.
-   *
-   * @param HalfEdgeVoronoi he	 	The edge to compare this edge to.
-   */
-  public boolean equal(HalfEdgeVoronoi he) {
-    return ystar == he.ystar;
-  }
-  
-  /**
-   * Prints this edge.
-   */
-  public void print() {
-    System.out.println("HE: ystar = " + ystar + ", ELpm = " + ELpm);
-  }
+    /**
+     * The sites of the edge
+     */
+    public SiteVoronoi ep[] = new SiteVoronoi[2];
+    /**
+     * The next region
+     */
+    public SiteVoronoi reg[] = new SiteVoronoi[2];
 
 }

@@ -1,3 +1,4 @@
+package cz.cvut.neuralnet;
 // ========================================================================== ;
 //                                                                            ;
 // Copyright 1996-1998 Hartmut S. Loos, Instit. f. Neuroinformatik, Bochum    ;
@@ -24,44 +25,46 @@
  *
  */
 class SiteVoronoi {
-  /**
-   * The coordinate
-   */
-  public FPoint coord = null;
-  /**
-   * The number of the site
-   */
-  public int sitenbr = 0;
-  /**
-   * The reference counter of the site
-   */
-  public int refcnt = 0;
 
-  /**
-   * The constructor of the SiteVoronoi class.
-   * 
-   */
-  public SiteVoronoi() {
-    coord = new FPoint();
-    sitenbr = -1;
-    refcnt = 0;
-  }
-  /**
-   * The constructor of the SiteVoronoi class.
-   * 
-   * @param p        The coordinates
-   * @param sitenbr  The identifier of the site
-   */
-  public SiteVoronoi(FPoint p, int sitenbr) {
-    coord = p;
-    this.sitenbr = sitenbr;
-    refcnt = 0;
-  }
+    /**
+     * The coordinate
+     */
+    public FPoint coord = null;
+    /**
+     * The number of the site
+     */
+    public int sitenbr = 0;
+    /**
+     * The reference counter of the site
+     */
+    public int refcnt = 0;
 
-  public void print() {
-    System.out.println("Site: (Nr. " + sitenbr + "):" + 
-		       coord.x + ", " + coord.y +
-		       " (refcnt = " + refcnt + ")");
-  }
+    /**
+     * The constructor of the SiteVoronoi class.
+     *
+     */
+    public SiteVoronoi() {
+        coord = new FPoint();
+        sitenbr = -1;
+        refcnt = 0;
+    }
+
+    /**
+     * The constructor of the SiteVoronoi class.
+     *
+     * @param p       The coordinates
+     * @param sitenbr The identifier of the site
+     */
+    public SiteVoronoi(FPoint p, int sitenbr) {
+        coord = p;
+        this.sitenbr = sitenbr;
+        refcnt = 0;
+    }
+
+    public void print() {
+        System.out.println("Site: (Nr. " + sitenbr + "):"
+                + coord.x + ", " + coord.y
+                + " (refcnt = " + refcnt + ")");
+    }
 
 }
